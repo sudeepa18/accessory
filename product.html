@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Details</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="product-container" id="productDetails">
+    <!-- Product details will be loaded here using JS -->
+  </div>
+
+  <script>
+    const productData = {
+      pendant: {
+        name: "Elegant Pendant",
+        description: "Graceful and versatile, suits every neckline.",
+        price: "₹299",
+        image: "images/pendant.jpg" ,
+        rating: "4.5",
+        reviews: 34
+      },
+      earrings: {
+        name: "Dainty Earrings",
+        description: "Perfect touch of charm for any outfit.",
+        price: "₹199",
+        image: "images/earrings.jpg",
+        rating: "4.2",
+        reviews: 21
+      },
+      bracelet: {
+        name: "Chic Bracelet",
+        description: "Stylish and simple, made for everyday wear.",
+        price: "₹249",
+        image: "images/bracelet.jpg",
+        rating: "4.3",
+        reviews: 18
+      },
+      anklet: {
+        name: "Delicate Anklet",
+        description: "Soft shimmer that complements every step.",
+        price: "₹179",
+        image: "images/anklet.jpg",
+        rating: "4.0",
+        reviews: 12
+      },
+      ring: {
+        name: "Graceful Ring",
+        description: "Elegant accessory to enhance your hands.",
+        price: "₹159",
+        image: "images/ring.jpg",
+        rating: "4.4",
+        reviews: 27
+      },
+      hairband: {
+        name: "Twinkle Hairband",
+        description: "Soft and classy, completes your hair look.",
+        price: "₹199",
+        image: "images/hairband.jpg",
+        rating: "4.1",
+        reviews: 16
+      },
+      brooch: {
+        name: "Classic Brooch",
+        description: "Timeless elegance for traditional styles.",
+        price: "₹139",
+        image: "images/brooch.jpg",
+        rating: "4.3",
+        reviews: 20
+      },
+      waistchain: {
+        name: "Charming Waist Chain",
+        description: "Glamorous addition to any festive look.",
+        price: "₹349",
+        image: "images/waistchain.jpg",
+        rating: "4.6",
+        reviews: 22
+      },
+      scrunchie: {
+        name: "Blossom Scrunchie",
+        description: "Cute and fluffy, perfect for daily wear.",
+        price: "₹89",
+        image: "images/scrunchie.jpg",
+        rating: "4.2",
+        reviews: 14
+      },
+      hairclip: {
+        name: "Pretty Hair Clip",
+        description: "Chic and decorative clip for your tresses.",
+        price: "₹109",
+        image: "images/hairclip.jpg",
+        rating: "4.0",
+        reviews: 10
+      },
+      clutch: {
+        name: "Floral Clutch",
+        description: "Compact and stylish with a floral finish.",
+        price: "₹99",
+        image: "images/clutch.jpg",
+        rating: "4.5",
+        reviews: 19
+      },
+      keychain: {
+        name: "Minimalist Keychain",
+        description: "Cute charm to keep your keys stylish.",
+        price: "₹79",
+        image: "images/keychain.jpg",
+        rating: "4.1",
+        reviews: 8
+      },
+      handmirror: {
+        name: "Vintage Hand Mirror",
+        description: "Pretty mirror with a floral frame and vintage charm.",
+        price: "₹499",
+        image: "images/handmirror.jpg",
+        rating: "4.4",
+        reviews: 17
+      },
+      hairtie: {
+        name: "Lovely Hair Tie",
+        description: "Bright and cheerful hair companion.",
+        price: "₹69",
+        image: "images/hairtie.jpg",
+        rating: "4.3",
+        reviews: 9
+      },
+      nosepin: {
+        name: "Elegant Nose Pin",
+        description: "Tiny sparkle for a subtle statement.",
+        price: "₹99",
+        image: "images/nosepin.jpg",
+        rating: "4.5",
+        reviews: 11
+      },
+      earcuff: {
+        name: "Sparkling Ear Cuff",
+        description: "Trendy piece without the piercing.",
+        price: "₹189",
+        image: "images/earcuff.jpg",
+        rating: "4.4",
+        reviews: 13
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const productKey = params.get('product');
+    const product = productData[productKey];
+
+    if (product) {
+      document.getElementById("productDetails").innerHTML = `
+      
+        <div class="product-page">
+          <img src="${product.image}" alt="${product.name}" class="product-image" />
+          <div class="product-info">
+            <h1>${product.name}</h1>
+            <p>${product.description}</p>
+            <p class="price">${product.price}</p>
+            <div class="rating">⭐ ${product.rating} (${product.reviews} reviews)</div>
+            <button class="btn" id="addToCartBtn">Add to Cart</button>
+            <button class="btn">Buy Now</button>
+            <a href="accessories.html" class="back-btn">← Back to Home</a>
+          </div>
+        </div>
+
+        <div class="reviews-section">
+          <h2>Customer Reviews</h2>
+          <div class="reviews-scroll">
+            <p><strong>Meera</strong>: Absolutely loved it! ⭐⭐⭐⭐⭐</p>
+            <p><strong>Anika</strong>: Great quality and fast delivery. ⭐⭐⭐⭐</p>
+            <p><strong>Tanya</strong>: Just what I wanted. ⭐⭐⭐⭐⭐</p>
+          </div>
+          <div class="review-form">
+  <h3>Leave a Review</h3>
+  <textarea id="reviewText" placeholder="Write your review..."></textarea>
+  <div class="star-rating">
+    <span class="star" data-value="1">★</span>
+    <span class="star" data-value="2">★</span>
+    <span class="star" data-value="3">★</span>
+    <span class="star" data-value="4">★</span>
+    <span class="star" data-value="5">★</span>
+  </div>
+  <button class="btn" id="submitReview">Submit</button>
+  <p id="submitMessage" class="submit-msg"></p>
+</div>
+
+      `
+      let selectedRating = 0;
+
+// Highlight stars on click
+document.querySelectorAll(".star").forEach(star => {
+  star.addEventListener("click", function () {
+    selectedRating = parseInt(this.getAttribute("data-value"));
+
+    document.querySelectorAll(".star").forEach(s => {
+      s.classList.remove("selected");
+    });
+
+    for (let i = 0; i < selectedRating; i++) {
+      document.querySelectorAll(".star")[i].classList.add("selected");
+    }
+  });
+});
+
+// Submit button click
+document.getElementById("submitReview").addEventListener("click", function () {
+  const reviewText = document.getElementById("reviewText");
+  const submitMsg = document.getElementById("submitMessage");
+
+  if (reviewText.value.trim() === "") {
+    submitMsg.textContent = "Please write a review before submitting.";
+    submitMsg.style.color = "red";
+    return;
+  }
+
+  submitMsg.textContent = "Submitted!";
+  submitMsg.style.color = "green";
+  reviewText.value = ""; // clear review box
+  selectedRating = 0;
+
+  document.querySelectorAll(".star").forEach(s => s.classList.remove("selected"));
+});
+;
+      const cartBtn = document.getElementById("addToCartBtn");
+
+cartBtn.addEventListener("click", function () {
+  if (this.innerText === "Add to Cart") {
+    this.innerText = "Added to Cart";
+    this.style.backgroundColor = "#7b002c"; // Wine red
+  } else {
+    this.innerText = "Add to Cart";
+    this.style.backgroundColor = ""; // Reset to default
+  }
+});
+
+
+    } else {
+      document.getElementById("productDetails").innerHTML = "<p>Product not found.</p>";
+    }
+  </script>
+</body>
+</html>
